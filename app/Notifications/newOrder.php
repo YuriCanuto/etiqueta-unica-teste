@@ -48,7 +48,8 @@ class newOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("{$this->user->name}")
+                    ->subject('Novo Pedido')
+                    ->line("Temos um novo pedido: {$this->user->name}")
                     ->line('Novo pedido realizado.');
     }
 

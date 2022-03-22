@@ -4,6 +4,7 @@ namespace App\Models\User;
 
 use App\Models\Company\Company;
 use App\Models\Order\Order;
+use App\Notifications\newOrder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -86,6 +87,11 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function sendNewOrderNotification($order)
+    {
+        $this->notify(new newOrder($this, $order));
     }
 
     /**

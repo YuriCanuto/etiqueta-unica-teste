@@ -46,8 +46,6 @@ class OrderController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            dd($e);
-
             return response([
                 'message' => 'Sorry! something went wrong'
             ], JsonResponse::HTTP_NOT_FOUND);
